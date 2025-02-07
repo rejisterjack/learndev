@@ -1,7 +1,4 @@
-import { app } from "./app"
-require("dotenv").config()
+import express from "express"
+const app = express()
 
-// create server
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`)
-})
+export default app
