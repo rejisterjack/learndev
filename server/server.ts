@@ -2,6 +2,7 @@ import express from "express"
 const app = express()
 import cors from "cors"
 import cookieParser from "cookie-parser"
+import ErrorMiddleware from "./middleware/error"
 import dotenv from "dotenv"
 dotenv.config()
 
@@ -44,5 +45,8 @@ app.all("*", (req, res, next) => {
   const err = new AppError(`Can't find ${req.originalUrl} on this server!`, 404)
   next(err)
 })
+
+// error middleware
+app.use(ErrorMiddleware)
 
 export default app
